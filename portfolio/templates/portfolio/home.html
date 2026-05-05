@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,75 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 30px;
+            margin-bottom: 20px;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a.active {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         .container {
@@ -23,48 +93,73 @@
             padding: 20px;
         }
 
+        /* Hero Section - Horizontal Layout */
         .hero {
             background: white;
             border-radius: 20px;
-            padding: 50px;
+            padding: 40px;
             margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            scroll-margin-top: 80px;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 200px;
             text-align: center;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #667eea;
-            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
         }
 
-        .hero h1 {
+        .profile-img:hover {
+            transform: scale(1.02);
+        }
+
+        .hero-content {
+            flex: 2;
+            min-width: 280px;
+        }
+
+        .hero-content h1 {
             font-size: 2.5rem;
             color: #333;
             margin-bottom: 10px;
         }
 
-        .hero .title {
+        .hero-content .title {
             font-size: 1.2rem;
             color: #667eea;
             margin-bottom: 15px;
+            font-weight: 500;
         }
 
-        .hero .bio {
+        .hero-content .bio {
             color: #666;
-            max-width: 600px;
-            margin: 0 auto 20px;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
         .contact-info {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 20px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin: 20px 0;
         }
 
         .contact-item {
@@ -76,12 +171,12 @@
         }
 
         .social-links {
-            margin-top: 20px;
+            margin: 20px 0;
         }
 
         .social-links a {
             display: inline-block;
-            margin: 0 10px;
+            margin: 0 10px 0 0;
             padding: 10px 20px;
             background: #667eea;
             color: white;
@@ -100,7 +195,8 @@
             border-radius: 20px;
             padding: 40px;
             margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            scroll-margin-top: 80px;
         }
 
         .section h2 {
@@ -111,82 +207,119 @@
             padding-left: 15px;
         }
 
+        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
         .skill-card {
             background: #f8f9fa;
-            padding: 15px;
+            padding: 20px;
             border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .skill-card:hover .skill-name {
+            color: white;
         }
 
         .skill-name {
             font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #333;
+            transition: color 0.3s;
         }
 
-        .skill-bar {
-            background: #e0e0e0;
-            height: 10px;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            height: 100%;
-            border-radius: 5px;
-            transition: width 1s ease;
-        }
-
+        /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         .project-card {
-            background: #f8f9fa;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
+            background: #f8fafc;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid #eef2f6;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
         }
 
         .project-info {
-            padding: 20px;
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-title {
             font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #333;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1e293b;
         }
 
         .project-tech {
             color: #667eea;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .project-links a {
-            display: inline-block;
-            margin-right: 15px;
+        .project-description {
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .project-links {
+            margin-top: auto;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             color: #667eea;
             text-decoration: none;
-            margin-top: 10px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+            transform: translateX(3px);
+        }
+
+        .no-link {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-style: italic;
         }
 
         .timeline {
@@ -233,116 +366,223 @@
             text-decoration: none;
             border-radius: 25px;
             font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            background: #219a3e;
+        }
+
+        /* Mobile menu button */
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #667eea;
         }
 
         @media (max-width: 768px) {
-            .hero { padding: 30px; }
-            .section { padding: 25px; }
-            .hero h1 { font-size: 1.8rem; }
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .hero {
+                padding: 30px;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .social-links a {
+                margin: 5px;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                padding: 15px 0;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
+
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span style="background: rgba(102, 126, 234, 0.1); padding: 8px 15px; border-radius: 30px; font-weight: bold;">
+                    🎓 
+                </span>
+            </div>
+            <div class="menu-btn" id="menuBtn">☰</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#certification" class="nav-link">Certifications</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <div class="hero">
-            <img src="/media/profile.jpg" alt="Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
-            <h1>{{ name|default:"Your Name" }}</h1>
-            <div class="title">{{ title|default:"Python Full Stack Developer" }}</div>
-            <div class="bio">{{ bio|default:"BCS Graduate 2026 | Python | Django | ML Enthusiast" }}</div>
-            
-            <div class="contact-info">
-                <div class="contact-item">📧 {{ email|default:"your.email@example.com" }}</div>
-                <div class="contact-item">📱 {{ phone|default:"+91 XXXXXXXXXX" }}</div>
-                <div class="contact-item">📍 {{ location|default:"Pune, India" }}</div>
-            </div>
-            
-            <div class="social-links">
-                <a href="{{ github|default:'#' }}" target="_blank">GitHub</a>
-                <a href="{{ linkedin|default:'#' }}" target="_blank">LinkedIn</a>
-            </div>
-            
-            <div>
-                <a href="#" class="download-btn" id="downloadResume">📄 Download Resume</a>
+        <!-- HOME SECTION - Horizontal Layout -->
+        <div id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-image">
+                    <img src="/media/projects/profile.jpg" alt="Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
+                </div>
+                <div class="hero-content">
+                    <h1>{{ name|default:"Your Name" }}</h1>
+                    <div class="title">{{ title|default:"Python Full Stack Developer" }}</div>
+                    <div class="bio">{{ bio|default:"BCS Graduate 2026 | Python | Django | ML Enthusiast" }}</div>
+
+                    <div class="contact-info">
+                        <div class="contact-item">📧 {{ email|default:"your.email@example.com" }}</div>
+                        <div class="contact-item">📱 {{ phone|default:"+91 XXXXXXXXXX" }}</div>
+                        <div class="contact-item">📍 {{ location|default:"Pune, India" }}</div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="{{ github|default:'#' }}" target="_blank">GitHub</a>
+                        <a href="{{ linkedin|default:'#' }}" target="_blank">LinkedIn</a>
+                    </div>
+
+                    <div>
+                        <a href="#" class="download-btn" id="downloadResume">📄 Download Resume</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- FIXED SKILLS SECTION -->
-        <div class="section">
+        <!-- SKILLS SECTION -->
+        <div id="skills" class="section">
             <h2>Technical Skills</h2>
             {% if skills %}
-                <div class="skills-grid">
-                    {% for skill in skills %}
-                    <div class="skill-card">
-                        <div class="skill-name">{{ skill.name }}</div>
-                        <!-- <div class="skill-progress" style="width: {{ skill.percentage|default:'0' }}%"></div> -->
-                        <div style="text-align: right; font-size: 0.8rem; margin-top: 5px; color: #667eea;">
-                            {{ skill.percentage|default:'0' }}%
-                        </div>
-                    </div>
-                    {% endfor %}
+            <div class="skills-grid">
+                {% for skill in skills %}
+                <div class="skill-card">
+                    <div class="skill-name">{{ skill.name|default:"Skill" }}</div>
                 </div>
+                {% endfor %}
+            </div>
             {% else %}
-                <div class="empty-state">
-                    <p>⚠️ No skills added yet.</p>
-                    <p>Please add skills using the admin panel or Python shell.</p>
-                    <p><strong>Quick fix:</strong> Run <code>python manage.py shell</code> and add skills.</p>
-                </div>
+            <div class="empty-state">
+                <p>⚠️ No skills added yet.</p>
+                <p>Please add skills using the admin panel or Python shell.</p>
+            </div>
             {% endif %}
         </div>
 
-        <div class="section">
+        <!-- PROJECTS SECTION -->
+        <div id="projects" class="section">
             <h2>Projects</h2>
             {% if projects %}
-                <div class="projects-grid">
-                    {% for project in projects %}
-                    <div class="project-card">
-                        <div class="project-info">
-                            <div class="project-title">{{ project.title }}</div>
-                            <div class="project-tech">{{ project.technology }}</div>
-                            <p>{{ project.description|truncatewords:30 }}</p>
-                            <div class="project-links">
-                                <a href="{{ project.github_link }}" target="_blank">GitHub →</a>
-                            </div>
+            <div class="projects-grid">
+                {% for project in projects %}
+                <div class="project-card">
+                    <div class="project-info">
+                        <div class="project-title">{{ project.title|default:"Project Name" }}</div>
+                        <div class="project-tech">{{ project.technology|default:"Technologies used" }}</div>
+                        <p class="project-description">{{ project.description|default:"No description available." }}</p>
+                        <div class="project-links">
+                            {% if project.github_link %}
+                            <a href="{{ project.github_link }}" target="_blank" class="project-link">🔗 GitHub</a>
+                            {% endif %}
+                            {% if project.live_link %}
+                            <a href="{{ project.live_link }}" target="_blank" class="project-link">🌐 Live Demo</a>
+                            {% endif %}
+                            {% if not project.github_link and not project.live_link %}
+                            <span class="no-link">🔗 Link coming soon</span>
+                            {% endif %}
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
+            </div>
             {% else %}
-                <div class="empty-state">
-                    <p>⚠️ No projects added yet.</p>
-                </div>
+            <div class="empty-state">
+                <p>⚠️ No projects added yet.</p>
+                <p>Add your projects in the admin panel to showcase your work.</p>
+            </div>
             {% endif %}
         </div>
 
-        <div class="section">
+        <!-- EDUCATION & CERTIFICATIONS SECTION -->
+        <div id="education" class="section">
             <h2>Education</h2>
             {% if education %}
-                <div class="timeline">
-                    {% for edu in education %}
-                    <div class="timeline-item">
-                        <strong>{{ edu.degree }}</strong><br>
-                        {{ edu.college }}<br>
-                        {{ edu.year }} | Percentage: {{ edu.percentage }}
-                    </div>
-                    {% endfor %}
+            <div class="timeline">
+                {% for edu in education %}
+                <div class="timeline-item">
+                    <strong>{{ edu.degree|default:"Degree" }}</strong><br>
+                    {{ edu.college|default:"College Name" }}<br>
+                    {{ edu.year|default:"Year" }} | {{ edu.percentage|default:"Percentage" }}
                 </div>
+                {% endfor %}
+            </div>
             {% else %}
-                <div class="empty-state">
-                    <p>⚠️ Education details not added yet.</p>
-                </div>
+            <div class="empty-state">
+                <p>⚠️ Education details not added yet.</p>
+            </div>
             {% endif %}
-            
-            <h2 style="margin-top: 30px;">Certifications</h2>
+
+            <h2 id="certification" style="margin-top: 40px;">Certifications</h2>
             {% if certifications %}
-                <ul style="margin-left: 20px; margin-top: 15px;">
-                    {% for cert in certifications %}
-                    <li style="margin: 10px 0;">✓ {{ cert }}</li>
-                    {% endfor %}
-                </ul>
+            <ul style="margin-left: 20px; margin-top: 15px;">
+                {% for cert in certifications %}
+                <li style="margin: 10px 0;">✓ {{ cert }}</li>
+                {% endfor %}
+            </ul>
             {% else %}
-                <div class="empty-state">
-                    <p>⚠️ No certifications added yet.</p>
-                </div>
+            <div class="empty-state">
+                <p>⚠️ No certifications added yet.</p>
+            </div>
             {% endif %}
         </div>
 
@@ -352,28 +592,58 @@
     </div>
 
     <script>
-        // Animate skill bars
-        const skillBars = document.querySelectorAll('.skill-progress');
-        if (skillBars.length > 0) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        const width = entry.target.style.width;
-                        entry.target.style.width = '0';
-                        setTimeout(() => {
-                            entry.target.style.width = width;
-                        }, 100);
-                        observer.unobserve(entry.target);
-                    }
-                });
+        // Smooth scrolling for navbar links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+
+                // Close mobile menu after clicking
+                document.getElementById('navLinks').classList.remove('show');
             });
-            skillBars.forEach(bar => observer.observe(bar));
-        }
-        
-        document.getElementById('downloadResume')?.addEventListener('click', function(e) {
+        });
+
+        // Active link highlighting on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('#home, #skills, #projects, #education, #certification');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menuBtn')?.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('show');
+        });
+
+        // Download resume button
+        document.getElementById('downloadResume')?.addEventListener('click', function (e) {
             e.preventDefault();
             alert('Add your resume PDF in the media folder');
         });
     </script>
 </body>
+
 </html>
