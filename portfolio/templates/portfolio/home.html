@@ -374,6 +374,19 @@
             background: #219a3e;
         }
 
+        /* Certification link styles */
+        .cert-link {
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cert-link:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
         /* Mobile menu button */
         .menu-btn {
             display: none;
@@ -455,8 +468,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span style="background: rgba(102, 126, 234, 0.1); padding: 8px 15px; border-radius: 30px; font-weight: bold;">
-                    🎓 
+                <span
+                    style="background: rgba(102, 126, 234, 0.1); padding: 8px 15px; border-radius: 30px; font-weight: bold;">
+                    🎓
                 </span>
             </div>
             <div class="menu-btn" id="menuBtn">☰</div>
@@ -475,7 +489,8 @@
         <div id="home" class="hero">
             <div class="hero-container">
                 <div class="hero-image">
-                    <img src="/media/projects/profile.jpg" alt="Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
+                    <img src="/media/profile.jpg" alt="Profile" class="profile-img"
+                        onerror="this.src='https://via.placeholder.com/150'">
                 </div>
                 <div class="hero-content">
                     <h1>{{ name|default:"Your Name" }}</h1>
@@ -494,7 +509,7 @@
                     </div>
 
                     <div>
-                        <a href="#" class="download-btn" id="downloadResume">📄 Download Resume</a>
+                        <a href="/media/rashi.pdf" class="download-btn" id="downloadResume">📄 Download Resume</a>
                     </div>
                 </div>
             </div>
@@ -576,7 +591,15 @@
             {% if certifications %}
             <ul style="margin-left: 20px; margin-top: 15px;">
                 {% for cert in certifications %}
-                <li style="margin: 10px 0;">✓ {{ cert }}</li>
+                <li style="margin: 10px 0;">
+                    {% if cert.link %}
+                    <a href="{{ cert.link }}" target="_blank" class="cert-link">
+                        ✓ {{ cert.name }}
+                    </a>
+                    {% else %}
+                    ✓ {{ cert }}
+                    {% endif %}
+                </li>
                 {% endfor %}
             </ul>
             {% else %}
@@ -637,12 +660,12 @@
         document.getElementById('menuBtn')?.addEventListener('click', () => {
             document.getElementById('navLinks').classList.toggle('show');
         });
-
         // Download resume button
         document.getElementById('downloadResume')?.addEventListener('click', function (e) {
-            e.preventDefault();
-            alert('Add your resume PDF in the media folder');
+            // Allow the download to happen - no preventDefault()
+            console.log('Downloading resume...');
         });
+
     </script>
 </body>
 

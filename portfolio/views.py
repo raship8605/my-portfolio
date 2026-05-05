@@ -5,14 +5,19 @@ def home(request):
     projects = Project.objects.all().order_by('-created_date')
     skills = Skill.objects.all()
     
+    certifications = [
+        {
+            'name': 'Python Full Stack - Kiran Academy, Pune',
+            'link': 'https://raw.githubusercontent.com/YOUR_USERNAME/my-portfolio/main/certificates/python-certificate.pdf'
+        }]
     # Your personal data 
     context = {
         'name': 'Pardeshi Rashi Ramnarayan',  
         'title': 'Python Full Stack Developer',
-        'bio': 'BCS Graduate 2026 | Python | Django | SQL Enthusiast',
+        'bio': 'BCS Graduate 2026 | Python | Django | SQL| Data Science Enthusiast',
         'email': 'rashipardeshi870@gmail.com',
         'phone': '+91 8767699147',
-        'location': 'Pune, India',
+        'location': 'Nanded, India',
         'github': 'https://github.com/raship8605',
         'linkedin': 'https://www.linkedin.com/in/pardeshi-rashi8605/',
         'projects': projects,
@@ -23,7 +28,7 @@ def home(request):
              'year': '2023-2026',
              'percentage': '85%'},
             {'degree': 'HSC', 
-             'college': 'Shree shivaji junoir college', 
+             'college': 'Shree shivaji junior college', 
              'year': '2021-2023',
              'percentage': '69%'},
         ],
@@ -33,3 +38,5 @@ def home(request):
         ]
     }
     return render(request, 'portfolio/home.html', context)
+
+
