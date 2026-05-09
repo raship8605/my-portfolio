@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from .models import Project, Skill
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+import json
+from .models import Contact
 
 def home(request):
     projects = Project.objects.all().order_by('-created_date')
@@ -38,5 +43,24 @@ def home(request):
         ]
     }
     return render(request, 'portfolio/home.html', context)
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def contact_view(request):
+    try:
+        data = json.loads(request.body)
+        
+        contact = Contact(
+            name=data.get('name'),
+            email=data.get('email'),
+            subject=data.get('subject', ''),
+            message=data.get('message')
+        )
+        contact.save()
+        
+        return JsonResponse({'status': 'success', 'message': 'Message sent!'})
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
 
 
