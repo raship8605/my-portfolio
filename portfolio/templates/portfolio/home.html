@@ -83,40 +83,6 @@
         </div>
 
         <!-- PROJECTS SECTION -->
-        <div id="projects" class="section">
-            <h2>Projects</h2>
-            {% if projects %}
-            <div class="projects-grid">
-                {% for project in projects %}
-                <div class="project-card">
-                    <div class="project-info">
-                        <div class="project-title">{{ project.title|default:"Project Name" }}</div>
-                        <div class="project-tech">{{ project.technology|default:"Technologies used" }}</div>
-                        <p class="project-description">{{ project.description|default:"No description available." }}</p>
-                        <div class="project-links">
-                            {% if project.github_link %}
-                            <a href="{{ project.github_link }}" target="_blank" class="project-link">🔗 GitHub</a>
-                            {% endif %}
-                            {% if project.live_link %}
-                            <a href="{{ project.live_link }}" target="_blank" class="project-link">🌐 Live Demo</a>
-                            {% endif %}
-                            {% if not project.github_link and not project.live_link %}
-                            <span class="no-link">🔗 Link coming soon</span>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            {% else %}
-            <div class="empty-state">
-                <p>⚠️ No projects added yet.</p>
-                <p>Add your projects in the admin panel to showcase your work.</p>
-            </div>
-            {% endif %}
-        </div>
-
-        <!-- EDUCATION & CERTIFICATIONS SECTION -->
         <div id="education" class="section">
             <h2>Education</h2>
             {% if education %}
@@ -136,28 +102,19 @@
             {% endif %}
 
             <h2 id="certification" style="margin-top: 40px;">Certifications</h2>
-            {% if certifications %}
             <ul style="margin-left: 20px; margin-top: 15px;">
-                {% for cert in certifications %}
                 <li style="margin: 10px 0;">
-                    {% if cert.link %}
-                    <a href="{{ cert.link }}" target="_blank" class="cert-link">
-                        ✓ {{ cert.name }}
+                    <a href="https://raw.githubusercontent.com/raship8605/my-portfolio/main/certificates/FullstackPythonCetificate.pdf"
+                        target="_blank" class="cert-link">
+                        📜 Full Stack Python Certification
                     </a>
-                    {% else %}
-                    ✓ {{ cert }}
-                    {% endif %}
                 </li>
-                {% endfor %}
+                <!-- Add more certificates here -->
             </ul>
-            {% else %}
-            <div class="empty-state">
-                <p>⚠️ No certifications added yet.</p>
-            </div>
-            {% endif %}
         </div>
 
-        <!-- CONTACT SECTION - Same styling as other sections -->
+
+        <!-- CONTACT SECTION -->
         <div id="contact" class="contact-section">
             <h2>Send a Message</h2>
             <div class="simple-contact-form">
@@ -184,8 +141,7 @@
                     <div id="formStatus" class="form-status"></div>
                 </form>
                 <div class="contact-note">
-                    📧 Or reach me directly at <a href="mailto:{{ email|default:'your.email@example.com' }}">{{
-                        email|default:"your.email@example.com" }}</a>
+                    📧 Or reach me directly at <a href="mailto:rashipardeshi870@gmail.com">rashipardeshi870@gmail.com</a>
                 </div>
             </div>
         </div>

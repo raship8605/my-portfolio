@@ -378,6 +378,18 @@ body {
     border-radius: 10px;
     color: #666;
 }
+.cert-link:visited {
+    color: #764ba2;
+}
+
+.cert-link:link {
+    color: #333;
+}
+
+.cert-link:hover {
+    color: #667eea;
+    text-decoration: underline;
+}
 
 .footer {
     text-align: center;
