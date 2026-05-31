@@ -48,6 +48,9 @@ def home(request):
     }
     return render(request, 'portfolio/home.html', context)
 
+def projects_view(request):
+    projects = Project.objects.all()  # Get all projects
+    return render(request, 'your_template.html', {'projects': projects})
 
 @csrf_exempt
 @require_http_methods(["POST"])

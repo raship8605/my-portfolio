@@ -84,30 +84,30 @@
 
         <!-- PROJECTS SECTION -->
         <!-- PROJECTS SECTION - Minimal -->
-<div id="projects" class="section">
+       <div id="projects" class="section">
     <h2>Projects</h2>
     {% if projects %}
     <div class="projects-grid">
         {% for project in projects %}
         <div class="project-card">
             <div class="project-info">
-                <h3 class="project-title">{{ project.title|default:"Project Title" }}</h3>
-                
-                <!-- Shows either technology or technologies field -->
-                {% if project.technologies %}
-                <div class="project-tech">{{ project.technologies }}</div>
-                {% elif project.technology %}
-                <div class="project-tech">{{ project.technology }}</div>
-                {% endif %}
-                
-                <p class="project-description">{{ project.description|default:"Project description goes here." }}</p>
-                
+                <h3 class="project-title">{{ project.title }}</h3>
+
+                <div class="project-tech">
+                    {% if project.technology %}
+                        {{ project.technology }}
+                    {% elif project.technologies %}
+                        {{ project.technologies }}
+                    {% else %}
+                        No tech stack specified
+                    {% endif %}
+                </div>
+
+                <p class="project-description">{{ project.description }}</p>
+
                 <div class="project-links">
                     {% if project.github_link %}
                     <a href="{{ project.github_link }}" class="project-link" target="_blank">GitHub →</a>
-                    {% endif %}
-                    {% if project.demo_link %}
-                    <a href="{{ project.demo_link }}" class="project-link" target="_blank">Live Demo →</a>
                     {% endif %}
                 </div>
             </div>
@@ -116,7 +116,7 @@
     </div>
     {% else %}
     <div class="empty-state">
-        <p>⚠️ Projects coming soon!</p>
+        <p>No projects yet. Add your first project!</p>
     </div>
     {% endif %}
 </div>
@@ -143,9 +143,10 @@
             <h2 id="certification" style="margin-top: 40px;">Certifications</h2>
             <ul style="margin-left: 20px; margin-top: 15px;">
                 <li style="margin: 10px 0;">
+                    📜 Full Stack Python Certification
                     <a href="https://raw.githubusercontent.com/raship8605/my-portfolio/main/certificates/FullstackPythonCetificate.pdf"
-                        target="_blank" class="cert-link">
-                        📜 Full Stack Python Certification
+                        target="_blank" style="margin-left: 10px; color: #4f46e5; text-decoration: none;">
+                        🔗 View Certificate
                     </a>
                 </li>
                 <!-- Add more certificates here -->

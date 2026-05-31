@@ -12,14 +12,7 @@ class Project(models.Model):
 
 class Skill(models.Model):
     name = models.CharField(max_length=100)
-    percentage = models.IntegerField(help_text="Skill proficiency %")
-    category = models.CharField(max_length=50, choices=[
-        ('backend', 'Backend'),
-        ('frontend', 'Frontend'),
-        ('database', 'Database'),
-        ('ml', 'Machine Learning'),
-    ])
-
+    
     def __str__(self):
         return self.name
     
