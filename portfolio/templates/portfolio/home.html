@@ -83,6 +83,45 @@
         </div>
 
         <!-- PROJECTS SECTION -->
+        <!-- PROJECTS SECTION - Minimal -->
+<div id="projects" class="section">
+    <h2>Projects</h2>
+    {% if projects %}
+    <div class="projects-grid">
+        {% for project in projects %}
+        <div class="project-card">
+            <div class="project-info">
+                <h3 class="project-title">{{ project.title|default:"Project Title" }}</h3>
+                
+                <!-- Shows either technology or technologies field -->
+                {% if project.technologies %}
+                <div class="project-tech">{{ project.technologies }}</div>
+                {% elif project.technology %}
+                <div class="project-tech">{{ project.technology }}</div>
+                {% endif %}
+                
+                <p class="project-description">{{ project.description|default:"Project description goes here." }}</p>
+                
+                <div class="project-links">
+                    {% if project.github_link %}
+                    <a href="{{ project.github_link }}" class="project-link" target="_blank">GitHub →</a>
+                    {% endif %}
+                    {% if project.demo_link %}
+                    <a href="{{ project.demo_link }}" class="project-link" target="_blank">Live Demo →</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <p>⚠️ Projects coming soon!</p>
+    </div>
+    {% endif %}
+</div>
+
+        <!-- Education SECTION -->
         <div id="education" class="section">
             <h2>Education</h2>
             {% if education %}
@@ -141,7 +180,8 @@
                     <div id="formStatus" class="form-status"></div>
                 </form>
                 <div class="contact-note">
-                    📧 Or reach me directly at <a href="mailto:rashipardeshi870@gmail.com">rashipardeshi870@gmail.com</a>
+                    📧 Or reach me directly at <a
+                        href="mailto:rashipardeshi870@gmail.com">rashipardeshi870@gmail.com</a>
                 </div>
             </div>
         </div>

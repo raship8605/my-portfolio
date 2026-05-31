@@ -36,6 +36,10 @@ def home(request):
              'college': 'Shree shivaji junior college', 
              'year': '2021-2023',
              'percentage': '69%'},
+              {'degree': 'SSC', 
+             'college': 'Shree shivaji HighSchool college', 
+             'year': '2021',
+             'percentage': '91%'},
         ],
         'certifications': [
             'Python Full Stack - Kiran Academy, Pune',
